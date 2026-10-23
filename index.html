@@ -274,7 +274,7 @@ Solutions Architect            enterprise data</span>
       <div>
         <h3>A governed data-access layer for an enterprise LLM</h3>
         <p>I designed and operate the layer that lets a customer run its own LLM engine against production-grade Oracle data: an MCP server on ORDS exposing 4 curated schemas (about 40 tables), scoped by connection origin, with Oracle Label Security and custom anonymization as guardrails.</p>
-        <p>Every AI use case clears a real-load QA gate before it reaches production.</p>
+        <p>Every AI use case clears a real-load QA gate, its evaluation step, before it reaches production.</p>
         <p class="tools">MCP, ORDS, Oracle Label Security, refreshable PDB clones</p>
       </div>
     </div>
@@ -382,13 +382,13 @@ Solutions Architect            enterprise data</span>
   <div class="wrap space">
     <figure class="space-pic">
       <img src="ai-astronaut.jpg" alt="AI-generated image of Fábio Oliveira smiling inside an astronaut helmet, with stars and the Earth behind him" width="720" height="660" loading="lazy">
-      <figcaption>Generated with AI. Ground truth: Rio Grande do Sul.</figcaption>
+      <figcaption>Generated with AI. Ground truth: Brazil.</figcaption>
     </figure>
     <div>
       <h2 id="space-title">The only hallucination on this page</h2>
       <p>Yes, that's me. No, I have never been to space. A generative model put me there from one photo and one prompt, and it took less time than a datafile resize.</p>
       <p>I keep it here because it's the best reminder of the rule I apply to every AI system I build: a convincing answer is not the same as a true one. The model was confident, the lighting was perfect, and the facts were wrong.</p>
-      <p>That's why the LLMs I connect to enterprise data only see curated, governed schemas, and why every use case clears a QA gate before production. Creativity is welcome. Grounding is mandatory.</p>
+      <p>That's why the LLMs I connect to enterprise data only see curated, governed schemas, and why every use case has to pass its evals on real load before it reaches production. Creativity is welcome. Grounding is mandatory.</p>
     </div>
   </div>
 </section>
