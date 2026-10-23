@@ -133,6 +133,14 @@
   .creds .yr{color:var(--muted)}
   .creds p{margin:0 0 14px}
 
+  /* space */
+  .space{display:grid;grid-template-columns:minmax(0,380px) 1fr;gap:56px;align-items:center}
+  @media (max-width:760px){.space{grid-template-columns:1fr;gap:28px}}
+  .space p{margin:0 0 14px;max-width:36em}
+  .space-pic{margin:0}
+  .space-pic img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:inset 0 0 0 1px var(--line)}
+  .space-pic figcaption{margin-top:10px;color:var(--muted);font-size:14px}
+
   /* contact */
   .contact .mail{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.01em}
   .contact .actions{margin-top:24px}
@@ -366,6 +374,21 @@ Solutions Architect            enterprise data</span>
         <h3>Languages</h3>
         <p>Portuguese (native), English (full professional), Spanish (limited working).</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="space-title">
+  <div class="wrap space">
+    <figure class="space-pic">
+      <img src="ai-astronaut.jpg" alt="AI-generated image of Fábio Oliveira smiling inside an astronaut helmet, with stars and the Earth behind him" width="720" height="660" loading="lazy">
+      <figcaption>Generated with AI. Ground truth: Rio Grande do Sul.</figcaption>
+    </figure>
+    <div>
+      <h2 id="space-title">The only hallucination on this page</h2>
+      <p>Yes, that's me. No, I have never been to space. A generative model put me there from one photo and one prompt, and it took less time than a datafile resize.</p>
+      <p>I keep it here because it's the best reminder of the rule I apply to every AI system I build: a convincing answer is not the same as a true one. The model was confident, the lighting was perfect, and the facts were wrong.</p>
+      <p>That's why the LLMs I connect to enterprise data only see curated, governed schemas, and why every use case clears a QA gate before production. Creativity is welcome. Grounding is mandatory.</p>
     </div>
   </div>
 </section>
