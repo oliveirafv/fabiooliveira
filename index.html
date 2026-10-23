@@ -1,13 +1,431 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Fábio Oliveira</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Fábio Oliveira | Oracle Database & AI Solutions Architect</title>
+<meta name="description" content="Oracle Database & AI Solutions Architect with 20+ years in enterprise Oracle estates, now focused on making corporate data usable by AI: governed, auditable and production-grade.">
+<meta name="author" content="Fábio Oliveira">
+<meta name="theme-color" content="#0a1310">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a1310;
+    --panel:#0f1c17;
+    --line:#1e3329;
+    --text:#d9e6de;
+    --muted:#8fa79b;
+    --phosphor:#62d49d;
+    --phosphor-dim:#2f6e52;
+    --sans:"Schibsted Grotesk", system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, monospace;
+    --wrap:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:var(--phosphor);text-underline-offset:3px;text-decoration-thickness:1px}
+  a:hover{color:#8ff0bf}
+  :focus-visible{outline:2px solid var(--phosphor);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+
+  /* header */
+  header.top{position:sticky;top:0;z-index:10;background:rgba(10,19,16,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:60px;flex-wrap:wrap}
+  .brand{font-weight:600;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+  nav.links{display:flex;gap:20px;flex-wrap:wrap}
+  nav.links a{color:var(--muted);text-decoration:none;font-size:15px}
+  nav.links a:hover{color:var(--text)}
+  @media (max-width:720px){nav.links{gap:14px;padding-bottom:10px}nav.links a{font-size:14px}}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  #rain{position:absolute;inset:0;width:100%;height:100%;opacity:.16;pointer-events:none}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
+  @media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:44px;padding-bottom:48px}}
+  h1{font-size:clamp(38px,5.4vw,60px);line-height:1.04;letter-spacing:-.025em;font-weight:700;margin:0 0 20px}
+  .lede{font-size:clamp(18px,2vw,21px);color:var(--text);max-width:34em;margin:0 0 28px}
+  .session{font:400 14px/1.55 var(--mono);background:rgba(15,28,23,.82);border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin:0 0 28px;overflow-x:auto;white-space:pre;color:var(--muted)}
+  .session .p{color:var(--phosphor)}
+  .session .v{color:var(--text)}
+  .where{color:var(--muted);font-size:15px;margin:0 0 24px;max-width:36em}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-block;padding:11px 18px;border-radius:6px;border:1px solid var(--phosphor-dim);color:var(--text);text-decoration:none;font-weight:500;font-size:15px}
+  .btn:hover{border-color:var(--phosphor);color:var(--text)}
+  .btn.primary{background:var(--phosphor);border-color:var(--phosphor);color:#06100c}
+  .btn.primary:hover{background:#7fe3b2;color:#06100c}
+  .hero .wrap > div{min-width:0}
+  figure.portrait{margin:0;justify-self:end;width:100%;max-width:340px;position:relative}
+  @media (max-width:860px){figure.portrait{justify-self:start;max-width:260px}}
+  figure.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 25%;border-radius:8px;filter:saturate(.8) contrast(1.04)}
+  figure.portrait::after{content:"";position:absolute;inset:0;border-radius:8px;background:linear-gradient(180deg,rgba(98,212,157,.0) 55%,rgba(10,19,16,.55));box-shadow:inset 0 0 0 1px var(--line);pointer-events:none}
+
+  /* sections */
+  section.block{padding:84px 0;border-bottom:1px solid var(--line)}
+  @media (max-width:600px){section.block{padding:56px 0}}
+  h2{font-size:clamp(28px,3.4vw,38px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+  .intro{color:var(--muted);max-width:40em;margin:0 0 40px}
+  h3{font-size:20px;line-height:1.3;margin:0 0 8px;font-weight:600;letter-spacing:-.01em}
+
+  /* execution plan */
+  .plan{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+  .plan-head,.plan-row{display:grid;grid-template-columns:52px minmax(250px,330px) 1fr;gap:20px;padding:18px 22px;align-items:start}
+  .plan-head{font:500 13px/1 var(--mono);color:var(--muted);border-bottom:1px solid var(--line);padding-top:14px;padding-bottom:14px}
+  .plan-row + .plan-row{border-top:1px solid var(--line)}
+  .plan .id{font:500 15px/1.5 var(--mono);color:var(--phosphor)}
+  .plan .op{font:500 15px/1.5 var(--mono);color:var(--text)}
+  .plan .op span{color:var(--phosphor-dim)}
+  .plan .what p{margin:0 0 6px}
+  .plan .tools{font-size:14px;color:var(--muted);margin:0}
+  @media (max-width:760px){
+    .plan-head{display:none}
+    .plan-row{grid-template-columns:36px 1fr;gap:6px 12px;padding:18px 16px}
+    .plan .what{grid-column:2}
+    .plan .op span{display:none}
+  }
+
+  /* results */
+  .results{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+  @media (max-width:760px){.results{grid-template-columns:1fr}}
+  .result{padding:22px 0;border-top:1px solid var(--line)}
+  .result .n{display:block;font:600 30px/1.15 var(--sans);letter-spacing:-.02em;color:var(--phosphor);margin-bottom:6px}
+  .result p{margin:0;color:var(--text)}
+
+  /* projects */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  @media (max-width:760px){.projects{grid-template-columns:1fr;gap:36px}}
+  .projects p{margin:0 0 12px}
+  .projects .tools{font-size:14px;color:var(--muted)}
+
+  /* experience */
+  .job{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:30px 0;border-top:1px solid var(--line)}
+  .job:first-of-type{border-top:0;padding-top:0}
+  @media (max-width:760px){.job{grid-template-columns:1fr;gap:8px}}
+  .job .when{color:var(--muted);font-size:15px}
+  .job .when strong{display:block;color:var(--text);font-size:17px;font-weight:600}
+  .job ul{margin:10px 0 0;padding-left:20px}
+  .job li{margin:0 0 8px}
+  .job li::marker{color:var(--phosphor-dim)}
+  .job .role{color:var(--muted);margin:0}
+  .job.earlier p{margin:6px 0 0;color:var(--muted)}
+  .todo{display:inline-block;margin-top:4px;padding:1px 6px;border:1px dashed #c9a24a;color:#e6c46e;font-size:13px;border-radius:3px}
+
+  /* writing */
+  .posts{list-style:none;margin:0;padding:0}
+  .posts li{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--line)}
+  @media (max-width:600px){.posts li{grid-template-columns:1fr;gap:2px}}
+  .posts time{color:var(--muted);font-size:15px}
+  .posts a{color:var(--text);text-decoration:none;font-weight:500}
+  .posts a:hover{color:var(--phosphor)}
+  .posts .why{display:block;color:var(--muted);font-size:15px;margin-top:2px}
+  .more{margin:24px 0 0}
+
+  /* credentials */
+  .creds{display:grid;grid-template-columns:1.3fr 1fr;gap:56px}
+  @media (max-width:760px){.creds{grid-template-columns:1fr;gap:36px}}
+  .creds ul{margin:0;padding-left:20px}
+  .creds li{margin:0 0 10px}
+  .creds li::marker{color:var(--phosphor-dim)}
+  .creds .yr{color:var(--muted)}
+  .creds p{margin:0 0 14px}
+
+  /* contact */
+  .contact .mail{font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.01em}
+  .contact .actions{margin-top:24px}
+  footer{padding:32px 0 48px;color:var(--muted);font-size:14px}
+  footer p{margin:0 0 6px}
+
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#rain{display:none}}
+</style>
 </head>
-<body style="font-family:system-ui,sans-serif;max-width:640px;margin:15vh auto;padding:0 16px">
-  <h1>Fábio Oliveira</h1>
-  <p>Site under construction. Meanwhile: <a href="https://oracle4us.wordpress.com">Oracle4us</a>.</p>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Fábio Oliveira</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#stack">Stack</a>
+      <a href="#results">Results</a>
+      <a href="#experience">Experience</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero" aria-labelledby="hero-title">
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <h1 id="hero-title">Fábio Oliveira</h1>
+      <p class="lede">Oracle Database &amp; AI Solutions Architect. For 20+ years I've kept enterprise Oracle estates running. Now I make the data inside them usable by AI: governed, auditable and production-grade.</p>
+<pre class="session" aria-label="SQL session describing my role"><span class="p">SQL&gt;</span> <span class="v">select role, focus from fabio;</span>
+
+ROLE                                      FOCUS
+----------------------------------------- ---------------------------------------
+<span class="v">Oracle Database &amp; AI Solutions Architect  Governed AI access to enterprise data</span>
+
+1 row selected.</pre>
+      <p class="where">Oracle ACE Associate. Based in Rio Grande do Sul, Brazil. Portuguese (EU) and Brazilian citizen, open to roles in the EU, the US or fully remote.</p>
+      <div class="actions">
+        <a class="btn primary" href="Fabio_Oliveira_CV.pdf" download>Download CV</a>
+        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn" href="https://www.linkedin.com/in/fabio-oliveira-ai">LinkedIn</a>
+        <a class="btn" href="https://oracle4us.wordpress.com/">Oracle4us blog</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="eu_2026_perfil.png" alt="Portrait of Fábio Oliveira" width="680" height="850">
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="stack" aria-labelledby="stack-title">
+  <div class="wrap">
+    <h2 id="stack-title">Where I work in the stack</h2>
+    <p class="intro">An AI agent asking a question of enterprise data runs through five layers before it reaches a disk. Read it the way a DBA reads an execution plan: from the question down to the hardware that answers it.</p>
+    <div class="plan" role="table" aria-label="Layers of the stack I work in">
+      <div class="plan-head" role="row"><span role="columnheader">Id</span><span role="columnheader">Operation</span><span role="columnheader">What I do there</span></div>
+      <div class="plan-row" role="row">
+        <span class="id" role="cell">1</span>
+        <span class="op" role="cell">GOVERNED AI ACCESS</span>
+        <div class="what" role="cell">
+          <p>Model Context Protocol (MCP) servers on Oracle REST Data Services that give an LLM curated, audited access to production-grade data, with access scoped by origin and sensitive columns anonymized.</p>
+          <p class="tools">MCP, ORDS, Oracle Label Security, PL/SQL anonymization</p>
+        </div>
+      </div>
+      <div class="plan-row" role="row">
+        <span class="id" role="cell">2</span>
+        <span class="op" role="cell"><span>&nbsp;</span>RETRIEVAL</span>
+        <div class="what" role="cell">
+          <p>Semantic search and natural-language queries over data that stays where it lives, next to the relational columns, so SQL filters and vector similarity run in one query.</p>
+          <p class="tools">Oracle AI Vector Search, Select AI, PostgreSQL pgvector, MongoDB Vector Search</p>
+        </div>
+      </div>
+      <div class="plan-row" role="row">
+        <span class="id" role="cell">3</span>
+        <span class="op" role="cell"><span>&nbsp;&nbsp;</span>DATA MOVEMENT</span>
+        <div class="what" role="cell">
+          <p>Real-time replication and change data capture, including vector columns, from on-premises estates to cloud targets.</p>
+          <p class="tools">Oracle GoldenGate, Data Guard, Debezium CDC</p>
+        </div>
+      </div>
+      <div class="plan-row" role="row">
+        <span class="id" role="cell">4</span>
+        <span class="op" role="cell"><span>&nbsp;&nbsp;&nbsp;</span>DATABASE PLATFORM</span>
+        <div class="what" role="cell">
+          <p>The estates where the most valuable data actually lives: HA/DR architecture, multitenant, migrations and upgrades from Oracle 7 to Oracle AI Database.</p>
+          <p class="tools">Oracle RAC, ASM, RMAN, multitenant, Exadata, ODA, ZDLRA</p>
+        </div>
+      </div>
+      <div class="plan-row" role="row">
+        <span class="id" role="cell">5</span>
+        <span class="op" role="cell"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span>INFRASTRUCTURE</span>
+        <div class="what" role="cell">
+          <p>Automation and infrastructure as code for large estates, on-premises and across five clouds.</p>
+          <p class="tools">Ansible, Python, Shell, Linux, OCI, Azure, GCP, AWS, Huawei Cloud</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="results" aria-labelledby="results-title">
+  <div class="wrap">
+    <h2 id="results-title">Results</h2>
+    <p class="intro">Numbers from production work at Timestamp, not from a lab.</p>
+    <div class="results">
+      <div class="result"><span class="n">2 weeks to under 4 hours</span><p>Environment delivery in a four-generation Oracle modernization (7, 9i, 11g, 19c) across 15 two-node RAC clusters and 55+ PDBs. Contract renewed at close.</p></div>
+      <div class="result"><span class="n">99.95% availability</span><p>Across 500+ Oracle instances under 24/7 SLAs spanning 12 enterprise contracts, for platforms such as Siebel, Flexcube, TIBCO, BAM and OBIEE.</p></div>
+      <div class="result"><span class="n">1,000 to 100</span><p>Manual executions per cycle, after standardizing 50+ recurring routines with Ansible, Python, Shell and PL/SQL.</p></div>
+      <div class="result"><span class="n">200+ TB</span><p>Single databases cloned with RMAN, in zero-downtime upgrades and cross-platform migrations with no unplanned downtime or data loss.</p></div>
+      <div class="result"><span class="n">50 GB in under 10 min</span><p>Nightly rebuild of a 19c QA estate with refreshable clone PDBs, so AI use cases are tested on real load with no data on developer workstations.</p></div>
+      <div class="result"><span class="n">3 audit cycles</span><p>Consecutive annual PCI-DSS and SOX audits supported with TDE, VPD and Oracle Advanced Security.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="projects-title">
+  <div class="wrap">
+    <h2 id="projects-title">Two recent projects</h2>
+    <p class="intro">The two sides of the same job: keeping the legacy estate modern, and opening it safely to AI.</p>
+    <div class="projects">
+      <div>
+        <h3>Legacy modernization, four generations deep</h3>
+        <p>I led the database and infrastructure workstream of an Oracle modernization that went from 7 to 9i to 11g to 19c under a strict as-is constraint. Target provisioning was automated with Ansible, and a reusable metadata PDB became the unit of delivery.</p>
+        <p>Environment delivery dropped from two weeks to under four hours, about 95%, and the contract was renewed at close.</p>
+        <p class="tools">Oracle 19c, RAC, multitenant, Ansible</p>
+      </div>
+      <div>
+        <h3>A governed data-access layer for an enterprise LLM</h3>
+        <p>I designed and operate the layer that lets a customer run its own LLM engine against production-grade Oracle data: an MCP server on ORDS exposing 4 curated schemas (about 40 tables), scoped by connection origin, with Oracle Label Security and custom anonymization as guardrails.</p>
+        <p>Every AI use case clears a real-load QA gate before it reaches production.</p>
+        <p class="tools">MCP, ORDS, Oracle Label Security, refreshable PDB clones</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience" aria-labelledby="experience-title">
+  <div class="wrap">
+    <h2 id="experience-title">Experience</h2>
+    <p class="intro">Oracle production since 2008, the last fourteen years as a consultant on international enterprise projects.</p>
+
+    <div class="job">
+      <div class="when"><strong>Timestamp</strong>June 2012 to present<br>Lisbon, Portugal</div>
+      <div>
+        <h3>Oracle Database &amp; AI Solutions Architect</h3>
+        <ul>
+          <li>Design and operate a governed data-access layer that lets an enterprise customer run its own LLM against production-grade Oracle data, through MCP on ORDS.</li>
+          <li>Led the database and infrastructure workstream of a four-generation Oracle modernization across 15 RAC clusters and 55+ PDBs, cutting environment delivery by about 95%.</li>
+          <li>Architect and modernize mission-critical Oracle environments across 500+ instances, sustaining 99.95% availability under 24/7 SLAs for 12 enterprise contracts.</li>
+          <li>Design HA/DR architectures with RAC, Data Guard, GoldenGate, RMAN and ASM, including zero-downtime upgrades and migrations across Linux, AIX, Solaris, HP-UX and Windows.</li>
+          <li>Built and maintain an Ansible automation framework for large Oracle estates, with reusable roles, dynamic inventory and Vault-backed secrets, run from a hardened bastion.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when"><strong>GetNet Tecnologia</strong>December 2010 to June 2012<br>Campo Bom, Brazil</div>
+      <div>
+        <h3>Senior Oracle Database Administrator</h3>
+        <ul>
+          <li>Ran mission-critical payment-processing databases in a fintech environment governed by ISO 27001 and PCI-DSS, on Oracle 9i, 10g and 11g, single instance and RAC.</li>
+          <li>Designed backup, recovery and DR with RMAN, Data Guard, GoldenGate and Streams, and led 10g to 11gR2 migrations. Also administered Sybase ASE and Replication Server.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="when"><strong>BEG Support</strong>February 2008 to December 2010<br>São Leopoldo, Brazil</div>
+      <div>
+        <h3>Oracle Database Administrator</h3>
+        <ul>
+          <li>Installed and managed Oracle 9i, 10g and 11g, single instance and RAC, across production and development, with RMAN backup strategies and DR testing.</li>
+          <li>Automated operations with Bash on Linux and Unix, monitored with OEM, Nagios and Zabbix, and deployed Oracle APEX.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job earlier">
+      <div class="when"><strong>Before that</strong>Around 2003 to 2008 <span class="todo">[VALIDAR: período exato]</span></div>
+      <div>
+        <h3>Hardware and Linux server maintenance technician</h3>
+        <p>Maintained hardware and Linux servers on Conectiva Linux, working with business applications written in FlagShip and with Oracle databases, while studying to become a computer technician at Colégio Luterano Concórdia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="writing" aria-labelledby="writing-title">
+  <div class="wrap">
+    <h2 id="writing-title">Writing</h2>
+    <p class="intro">Lab work and production incidents, written up on the Oracle4us blog. Every output in these posts comes from a real run.</p>
+    <ul class="posts">
+      <li><time datetime="2026-07-22">Jul 22, 2026</time><div><a href="https://oracle4us.wordpress.com/2026/07/22/from-ora-07443-to-ora-02384-the-rogue-common-profile-catcon-pl-built-and-a-pdb-clone-exposed/">From ORA-07443 to ORA-02384: The Rogue Common Profile catcon.pl Built and a PDB Clone Exposed</a><span class="why">A production multitenant incident traced through the data dictionary.</span></div></li>
+      <li><time datetime="2026-07-19">Jul 19, 2026</time><div><a href="https://oracle4us.wordpress.com/2026/07/19/from-vector-replication-to-semantic-search-querying-an-always-free-autonomous-ai-lakehouse/">From Vector Replication to Semantic Search: Querying an Always Free Autonomous AI Lakehouse</a><span class="why">Replicated embeddings answering the same semantic query, to the last digit, on both sides.</span></div></li>
+      <li><time datetime="2026-07-12">Jul 12, 2026</time><div><a href="https://oracle4us.wordpress.com/2026/07/12/from-a-docker-container-to-a-free-cloud-lakehouse-replicating-a-vector-with-goldengate-26ai-microservices/">From a Docker container to a Free cloud lakehouse: replicating a VECTOR with GoldenGate 26ai Microservices</a><span class="why">A VECTOR column replicated from a laptop to an Autonomous database in OCI.</span></div></li>
+      <li><time datetime="2026-07-11">Jul 11, 2026</time><div><a href="https://oracle4us.wordpress.com/2026/07/11/patching-a-base-database-service-dbcs-db-system-in-oci-console-vs-dbcli-end-to-end/">Patching a Base Database Service (DBCS) DB System in OCI: Console vs dbcli, End to End</a><span class="why">A full quarterly patching cycle in OCI, both ways.</span></div></li>
+      <li><time datetime="2026-07-07">Jul 7, 2026</time><div><a href="https://oracle4us.wordpress.com/2026/07/07/ask-your-oracle-database-in-english-debug-it-in-brazilian-select-ai-on-an-always-free-lakehouse-with-a-free-cohere-key/">Ask Your Oracle Database in English, Debug It in Brazilian: Select AI on an Always Free Lakehouse</a><span class="why">Natural-language SQL with Select AI, and the four errors it took to get there.</span></div></li>
+      <li><time datetime="2026-07-04">Jul 4, 2026</time><div><a href="https://oracle4us.wordpress.com/2026/07/04/how-to-resolve-missing-pdb-service-in-oracle-19c-active-data-guard-no-gi-on-standby/">How to Resolve Missing PDB Service in Oracle 19c Active Data Guard (No GI on Standby)</a><span class="why">An HA gap that only shows up at shift change.</span></div></li>
+    </ul>
+    <p class="more"><a href="https://oracle4us.wordpress.com/">All posts on Oracle4us</a></p>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="creds-title">
+  <div class="wrap">
+    <h2 id="creds-title">Certifications and education</h2>
+    <p class="intro">Recognized by the Oracle ACE program, and certified across AI, cloud and the database core.</p>
+    <div class="creds">
+      <ul>
+        <li>Oracle AI Vector Search Certified Professional <span class="yr">(2025)</span></li>
+        <li>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional <span class="yr">(2026)</span></li>
+        <li>Oracle Certified Professional, Oracle Database 19c: RAC, ASM and Grid Infrastructure Administrator <span class="yr">(2025)</span></li>
+        <li>Oracle Cloud Infrastructure 2025 Certified Architect Associate <span class="yr">(2025)</span></li>
+        <li>Oracle Database Administration 2019 Certified Professional (OCP)</li>
+        <li>Oracle Certified Expert, Oracle Database 12c: Data Guard Administrator</li>
+        <li>Oracle GoldenGate 12c Certified Implementation Specialist</li>
+        <li>Oracle Exadata Database Machine and Cloud Service 2017 Certified Implementation Specialist</li>
+        <li>Microsoft Certified: Azure Administrator Associate</li>
+        <li>CCP, Certificado de Competências Pedagógicas (certified trainer)</li>
+      </ul>
+      <div>
+        <h3>Oracle ACE Associate</h3>
+        <p>Technical content author on Oracle, AI and data infrastructure. <a href="https://apexadb.oracle.com/ords/ace/profile/FabioOliveira">ACE profile</a> and <a href="https://www.credly.com/users/fabio-oliveira/badges">verified badges on Credly</a>.</p>
+        <h3>Education</h3>
+        <p>MSc, Computer Engineering, ISCTE Instituto Universitário de Lisboa <span class="yr">(2015 to 2017)</span></p>
+        <p>BSc, Information Systems, Centro Universitário Feevale <span class="yr">(2006 to 2010)</span></p>
+        <h3>Languages</h3>
+        <p>Portuguese (native), English (full professional), Spanish (limited working).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 id="contact-title">Get in touch</h2>
+    <p class="intro">Happy to talk about governed AI access to enterprise data, Oracle modernization or replication at scale. Email is the fastest way to reach me.</p>
+    <a class="mail" href="mailto:oliveirafv@gmail.com">oliveirafv@gmail.com</a>
+    <div class="actions">
+      <a class="btn" href="https://www.linkedin.com/in/fabio-oliveira-ai">LinkedIn</a>
+      <a class="btn" href="https://oracle4us.wordpress.com/">Oracle4us blog</a>
+      <a class="btn" href="Fabio_Oliveira_CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Fábio Oliveira</p>
+    <p>Oracle ACE is a community recognition program. The views on this site are my own and do not necessarily reflect Oracle's.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c=document.getElementById('rain');
+  if(!c||!c.getContext) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx=c.getContext('2d'), glyphs='0123456789ABCDEF<>=*;:SELECTFROMWHERE'.split('');
+  var size=15, cols=0, drops=[], visible=true, last=0, step=95;
+  function resize(){
+    var r=c.getBoundingClientRect(), dpr=Math.min(window.devicePixelRatio||1,2);
+    c.width=r.width*dpr; c.height=r.height*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    cols=Math.ceil(r.width/(size*1.4));
+    drops=[]; for(var i=0;i<cols;i++) drops.push(Math.random()*-r.height/size);
+    ctx.fillStyle='#0a1310'; ctx.fillRect(0,0,r.width,r.height);
+  }
+  function frame(t){
+    if(visible && !document.hidden && t-last>step){
+      last=t;
+      var w=c.width, h=c.height/Math.min(window.devicePixelRatio||1,2);
+      ctx.fillStyle='rgba(10,19,16,0.12)'; ctx.fillRect(0,0,w,h);
+      ctx.font=size+'px "IBM Plex Mono", monospace';
+      for(var i=0;i<cols;i++){
+        var y=drops[i]*size;
+        ctx.fillStyle = Math.random()<0.04 ? '#b9f5d6' : '#62d49d';
+        ctx.fillText(glyphs[(Math.random()*glyphs.length)|0], i*size*1.4, y);
+        if(y>h && Math.random()>0.975) drops[i]=0; else drops[i]+= (i%3===0?0.6:1);
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){visible=e[0].isIntersecting;}).observe(c);
+  }
+  window.addEventListener('resize',resize);
+  resize(); requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
